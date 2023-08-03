@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.sip.demo.security_role_demo.security.CustomUserDetailsService;
 
@@ -62,11 +61,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
     	System.out.println("websecurity.........");
-    	web.ignoring().antMatchers("/v2/api-docs",
+    	web.ignoring().antMatchers("/api/**","/v2/api-docs",
                 "/configuration/ui",
                 "/swagger-resources/**",
                 "/configuration/security",
-                "/swagger-ui.html",
+                "/swagger-ui/index.html",
                 "/webjars/**",
                 "/v3/api-docs/**",
                 "/swagger-ui/**",

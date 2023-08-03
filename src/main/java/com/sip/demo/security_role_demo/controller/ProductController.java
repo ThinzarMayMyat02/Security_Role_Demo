@@ -75,7 +75,6 @@ public class ProductController {
 
     @RequestMapping("/delete/{id}")
     public String deleteProduct(@PathVariable("id")int id){
-    	System.out.println("in delete...................");
         productService.deleteProduct(id);
         return "redirect:/";
     }

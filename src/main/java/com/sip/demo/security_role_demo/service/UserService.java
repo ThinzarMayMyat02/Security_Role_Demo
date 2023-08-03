@@ -10,7 +10,7 @@ import com.sip.demo.security_role_demo.model.User;
 @Service
 public interface UserService {
 
-    public void save(User user) throws Exception ;
+    public User save(User user) throws Exception ;
 
     public List<User> listAllUsers();
 
@@ -22,7 +22,7 @@ public interface UserService {
 
     public List<User> findByUsernameContainingIgnoreCase(String keyword);
 
-    public void updateUser(int id,User user);
+    public User updateUser(int id,User user);
 
     public User getUserByUsername(String name);
 

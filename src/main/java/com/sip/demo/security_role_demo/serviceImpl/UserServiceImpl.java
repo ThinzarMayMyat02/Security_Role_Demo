@@ -23,11 +23,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void save(User user) throws Exception {
+    public User save(User user) throws Exception {
         if (!userRepository.findOneByUsername(user.getUsername()).isPresent()) {
             String encoded = passwordEncoder.encode(user.getPassword());
             user.setPassword(encoded);
-            userRepository.saveAndFlush(user);
+            return userRepository.saveAndFlush(user);
         }else{
             throw new UsernameAlreadyExistsException("Username already exists!!");
         }
@@ -63,11 +63,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(int id,User user) {
+    public User updateUser(int id,User user) {
         	User u=userRepository.findById(id).get();
             u.setEnabled(user.isEnabled());
             u.setRoleSet(user.getRoleSet());
-            userRepository.save(u);
+            return userRepository.save(u);
     }
 
     public User getUserByUsername(String name){
