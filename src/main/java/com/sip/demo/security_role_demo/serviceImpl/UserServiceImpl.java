@@ -64,7 +64,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(int id,User user) {
-        System.out.println("update in service impl");
         	User u=userRepository.findById(id).get();
             u.setEnabled(user.isEnabled());
             u.setRoleSet(user.getRoleSet());
